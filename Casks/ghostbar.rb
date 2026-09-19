@@ -7,18 +7,19 @@ cask "ghostbar" do
   desc "Floating overlay that mirrors a dead-display Touch Bar"
   homepage "https://github.com/felipepkgs/GhostBar"
 
+  depends_on macos: :ventura
+
   app "GhostBar.app"
 
   # Ad-hoc signed only (no Apple Developer ID) — see felipepkgs/GhostBar's
   # Scripts/build_app.sh for why. Clears the Gatekeeper quarantine flag so
   # users don't have to right-click > Open manually on first launch.
-  postflight do
-    system_command "/usr/bin/xattr",
-                    args: ["-dr", "com.apple.quarantine", "#{appdir}/GhostBar.app"]
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", appdir/"GhostBar.app"]
   end
 
   zap trash: [
-    "~/Library/Preferences/com.felipepkgs.ghostbar.plist",
     "~/Library/Caches/com.felipepkgs.ghostbar",
+    "~/Library/Preferences/com.felipepkgs.ghostbar.plist",
   ]
 end
