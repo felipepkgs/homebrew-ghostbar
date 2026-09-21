@@ -1,6 +1,6 @@
 cask "ghostbar" do
-  version "0.2.7"
-  sha256 "fc7ebf989d7b18dab832ac45db16afe9e8cd9afe3de919d4a17137f5a71d1fe3"
+  version "0.2.8"
+  sha256 "05868399c0869cd2267e7d65a0121297e6fea3364f7036eedc5633dacaf859a5"
 
   url "https://github.com/felipepkgs/GhostBar/releases/download/v#{version}/GhostBar.app.zip"
   name "GhostBar"
